@@ -12,17 +12,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
     <link rel="icon" type="image/x-icon" href="images/favicon.jpg">
     <style>
-        /* ===== HEADER STYLES ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: #f8f9fa;
-        }
+        body { font-family: 'Poppins', sans-serif; background: #f8f9fa; }
 
         header {
             background: #fff;
@@ -33,11 +25,7 @@
             transition: all 0.3s ease;
         }
 
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 20px; }
 
         .nav-container {
             display: flex;
@@ -46,23 +34,10 @@
             padding: 20px;
         }
 
-        .logo {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-        }
+        .logo { display: flex; align-items: center; text-decoration: none; }
+        .logo img { height: 60px; width: auto; }
 
-        .logo img {
-            height: 60px;
-            width: auto;
-        }
-
-        .main-nav ul {
-            display: flex;
-            list-style: none;
-            gap: 40px;
-            align-items: center;
-        }
+        .main-nav ul { display: flex; list-style: none; gap: 40px; align-items: center; }
 
         .main-nav ul li a {
             text-decoration: none;
@@ -73,9 +48,7 @@
             transition: color 0.3s ease;
         }
 
-        .main-nav ul li a:hover {
-            color: #e74c3c;
-        }
+        .main-nav ul li a:hover { color: #e74c3c; }
 
         .btn-contact {
             background: #e74c3c;
@@ -84,11 +57,8 @@
             border-radius: 25px;
         }
 
-        /* ===== GALLERY SECTION ===== */
-        .gallery-section {
-            padding: 100px 0;
-            min-height: calc(100vh - 200px);
-        }
+        /* ===== GALLERY ===== */
+        .gallery-section { padding: 100px 0; min-height: calc(100vh - 200px); }
 
         .section-title {
             text-align: center;
@@ -98,10 +68,7 @@
             font-weight: 700;
         }
 
-        .gallery-grid {
-            position: relative;
-            min-height: 600px;
-        }
+        .gallery-grid { position: relative; min-height: 600px; }
 
         .gallery-page {
             display: none;
@@ -110,19 +77,11 @@
             animation: fadeIn 0.5s ease;
         }
 
-        .gallery-page.active {
-            display: grid;
-        }
+        .gallery-page.active { display: grid; }
 
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
 
         .gallery-item {
@@ -147,16 +106,11 @@
             transition: transform 0.5s ease;
         }
 
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
+        .gallery-item:hover img { transform: scale(1.1); }
 
         .gallery-overlay {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            inset: 0;
             background: rgba(231, 76, 60, 0.8);
             display: flex;
             align-items: center;
@@ -165,16 +119,10 @@
             transition: opacity 0.3s ease;
         }
 
-        .gallery-item:hover .gallery-overlay {
-            opacity: 1;
-        }
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+        .gallery-overlay i { font-size: 40px; color: white; }
 
-        .gallery-overlay i {
-            font-size: 40px;
-            color: white;
-        }
-
-        /* Pagination Styles */
+        /* Pagination */
         .pagination {
             display: flex;
             justify-content: center;
@@ -198,10 +146,7 @@
             gap: 8px;
         }
 
-        .pagination-btn:hover:not(:disabled) {
-            background: #e74c3c;
-            color: white;
-        }
+        .pagination-btn:hover:not(:disabled) { background: #e74c3c; color: white; }
 
         .pagination-btn:disabled {
             opacity: 0.5;
@@ -210,10 +155,7 @@
             color: #999;
         }
 
-        .pagination-numbers {
-            display: flex;
-            gap: 10px;
-        }
+        .pagination-numbers { display: flex; gap: 10px; }
 
         .page-number {
             width: 45px;
@@ -227,129 +169,125 @@
             transition: all 0.3s ease;
         }
 
-        .page-number:hover {
-            border-color: #e74c3c;
-            color: #e74c3c;
-        }
+        .page-number:hover { border-color: #e74c3c; color: #e74c3c; }
+        .page-number.active { background: #e74c3c; color: white; border-color: #e74c3c; }
 
-        .page-number.active {
-            background: #e74c3c;
-            color: white;
-            border-color: #e74c3c;
-        }
-
-        /* Popup */
-        .popup {
+        /* ===== LIGHTBOX ===== */
+        .lightbox {
             display: none;
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
+            inset: 0;
+            background: rgba(0, 0, 0, 0.92);
+            z-index: 99999;
             justify-content: center;
             align-items: center;
-            z-index: 9999;
+            animation: lbFadeIn 0.25s ease;
         }
 
-        .popup img {
-            max-width: 90%;
-            max-height: 90%;
-            box-shadow: 0 0 30px rgba(255,255,255,0.3);
-            border-radius: 10px;
+        .lightbox.open { display: flex; }
+
+        @keyframes lbFadeIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
         }
 
-        .close-btn {
-            position: absolute;
-            top: 30px;
-            right: 40px;
-            font-size: 50px;
-            color: white;
+        .lightbox-img-wrap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 90vw;
+            max-height: 90vh;
+            animation: lbZoomIn 0.3s ease;
+        }
+
+        @keyframes lbZoomIn {
+            from { transform: scale(0.85); opacity: 0; }
+            to   { transform: scale(1);    opacity: 1; }
+        }
+
+        .lightbox-img-wrap img {
+            max-width: 90vw;
+            max-height: 90vh;
+            border-radius: 12px;
+            box-shadow: 0 0 60px rgba(0,0,0,0.6);
+            object-fit: contain;
+            display: block;
+        }
+
+        .lb-close {
+            position: fixed;
+            top: 20px;
+            right: 28px;
+            font-size: 44px;
+            color: #fff;
             cursor: pointer;
-            transition: color 0.3s ease;
+            line-height: 1;
+            transition: color 0.25s, transform 0.25s;
+            z-index: 100000;
+            user-select: none;
         }
 
-        .close-btn:hover {
-            color: #e74c3c;
+        .lb-close:hover { color: #e74c3c; transform: rotate(90deg); }
+
+        .lb-arrow {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.12);
+            color: #fff;
+            border: none;
+            font-size: 32px;
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.25s, transform 0.25s;
+            z-index: 100000;
+        }
+
+        .lb-arrow:hover { background: #e74c3c; transform: translateY(-50%) scale(1.1); }
+        .lb-prev { left: 20px; }
+        .lb-next { right: 20px; }
+
+        .lb-counter {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: 1px;
         }
 
         /* Footer */
-        footer {
-            background: #2c3e50;
-            color: white;
-            padding: 30px 0;
-            text-align: center;
-        }
+        footer { background: #2c3e50; color: white; padding: 30px 0; text-align: center; }
 
-        .footer-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+        .footer-container { display: flex; justify-content: space-between; align-items: center; }
 
-        .social-links a {
-            color: white;
-            font-size: 24px;
-            margin-left: 20px;
-            transition: color 0.3s ease;
-        }
-
-        .social-links a:hover {
-            color: #e74c3c;
-        }
+        .social-links a { color: white; font-size: 24px; margin-left: 20px; transition: color 0.3s ease; }
+        .social-links a:hover { color: #e74c3c; }
 
         /* Responsive */
-        @media (max-width: 1200px) {
-            .gallery-page {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
-
-        @media (max-width: 992px) {
-            .gallery-page {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
+        @media (max-width: 1200px) { .gallery-page { grid-template-columns: repeat(4, 1fr); } }
+        @media (max-width: 992px)  { .gallery-page { grid-template-columns: repeat(3, 1fr); } }
         @media (max-width: 768px) {
-            .gallery-page {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .section-title {
-                font-size: 32px;
-                margin-bottom: 40px;
-            }
-
-            .gallery-section {
-                padding: 60px 0;
-            }
-
-            .pagination-btn {
-                padding: 10px 20px;
-                font-size: 14px;
-            }
-
-            .pagination {
-                margin-top: 40px;
-            }
+            .gallery-page { grid-template-columns: repeat(2, 1fr); }
+            .section-title { font-size: 32px; margin-bottom: 40px; }
+            .gallery-section { padding: 60px 0; }
+            .pagination-btn { padding: 10px 20px; font-size: 14px; }
+            .pagination { margin-top: 40px; }
+            .lb-arrow { width: 42px; height: 42px; font-size: 22px; }
+            .lb-prev { left: 8px; }
+            .lb-next { right: 8px; }
         }
-
         @media (max-width: 480px) {
-            .gallery-page {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-
-            .pagination-numbers {
-                gap: 5px;
-            }
-
-            .page-number {
-                width: 40px;
-                height: 40px;
-                font-size: 14px;
-            }
+            .gallery-page { grid-template-columns: 1fr; gap: 15px; }
+            .pagination-numbers { gap: 5px; }
+            .page-number { width: 40px; height: 40px; font-size: 14px; }
         }
     </style>
 </head>
@@ -361,7 +299,6 @@
             <a href="#" class="logo">
                 <img src="images/logo.jpg" alt="Quynh Anh Logo">
             </a>
-
             <nav class="main-nav">
                 <ul>
                     <li><a href="#home">Home</a></li>
@@ -374,48 +311,35 @@
     </header>
 
     <main>
-        <!-- ===== GALLERY SECTION ===== -->
         <section id="gallery" class="gallery-section">
             <div class="container">
                 <h2 class="section-title">My Gallery</h2>
-                
+
                 <div class="gallery-grid" id="galleryGrid">
-                    <!-- Page 3 - 15 images -->
                     <div class="gallery-page active" data-page="3">
                         <div class="gallery-item">
                             <img src="images/com_01.jpg" alt="Gallery 31">
-                            <div class="gallery-overlay">
-                                <i class="fas fa-search-plus"></i>
-                            </div>
+                            <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
                         </div>
                         <div class="gallery-item">
                             <img src="images/com_02.jpg" alt="Gallery 32">
-                            <div class="gallery-overlay">
-                                <i class="fas fa-search-plus"></i>
-                            </div>
+                            <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
                         </div>
                         <div class="gallery-item">
                             <img src="images/com_03.jpg" alt="Gallery 33">
-                            <div class="gallery-overlay">
-                                <i class="fas fa-search-plus"></i>
-                            </div>
+                            <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
                         </div>
                         <div class="gallery-item">
                             <img src="images/com_04.jpg" alt="Gallery 34">
-                            <div class="gallery-overlay">
-                                <i class="fas fa-search-plus"></i>
-                            </div>
+                            <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
                         </div>
                         <div class="gallery-item">
                             <img src="images/com_05.jpg" alt="Gallery 35">
-                            <div class="gallery-overlay">
-                                <i class="fas fa-search-plus"></i>
-                            </div>
+                            <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
                         </div>
                     </div>
                 </div>
 
-             
             </div>
         </section>
     </main>
@@ -430,8 +354,77 @@
         </div>
     </footer>
 
+    <!-- ===== LIGHTBOX HTML ===== -->
+    <div class="lightbox" id="lightbox">
+        <span class="lb-close" id="lbClose">&times;</span>
+        <button class="lb-arrow lb-prev" id="lbPrev"><i class="fas fa-chevron-left"></i></button>
+        <div class="lightbox-img-wrap">
+            <img src="" alt="" id="lbImg">
+        </div>
+        <button class="lb-arrow lb-next" id="lbNext"><i class="fas fa-chevron-right"></i></button>
+        <div class="lb-counter" id="lbCounter"></div>
+    </div>
 
-   
+    <!-- ===== LIGHTBOX JAVASCRIPT ===== -->
+    <script>
+        const lightbox  = document.getElementById('lightbox');
+        const lbImg     = document.getElementById('lbImg');
+        const lbClose   = document.getElementById('lbClose');
+        const lbPrev    = document.getElementById('lbPrev');
+        const lbNext    = document.getElementById('lbNext');
+        const lbCounter = document.getElementById('lbCounter');
+
+        let images  = [];
+        let current = 0;
+
+        function collectImages() {
+            images = [...document.querySelectorAll('.gallery-page.active .gallery-item img')]
+                        .map(img => ({ src: img.src, alt: img.alt }));
+        }
+
+        function openLightbox(index) {
+            collectImages();
+            current = index;
+            showImage();
+            lightbox.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function showImage() {
+            lbImg.src = images[current].src;
+            lbImg.alt = images[current].alt;
+            lbCounter.textContent = `${current + 1} / ${images.length}`;
+            lbPrev.style.display = current === 0 ? 'none' : 'flex';
+            lbNext.style.display = current === images.length - 1 ? 'none' : 'flex';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('open');
+            document.body.style.overflow = '';
+            lbImg.src = '';
+        }
+
+        function bindGalleryItems() {
+            document.querySelectorAll('.gallery-item').forEach((item, index) => {
+                item.addEventListener('click', () => openLightbox(index));
+            });
+        }
+
+        lbPrev.addEventListener('click', () => { if (current > 0) { current--; showImage(); } });
+        lbNext.addEventListener('click', () => { if (current < images.length - 1) { current++; showImage(); } });
+
+        lbClose.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('open')) return;
+            if (e.key === 'Escape')     closeLightbox();
+            if (e.key === 'ArrowLeft')  { if (current > 0)               { current--; showImage(); } }
+            if (e.key === 'ArrowRight') { if (current < images.length - 1) { current++; showImage(); } }
+        });
+
+        bindGalleryItems();
+    </script>
+
 </body>
-
 </html>
